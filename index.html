@@ -1,20 +1,67 @@
 <html>
   <head>
     <script>
-      const QUOTEBANK = ["oejfoiejofjeofjerwofjaejf"];
+      const QUOTEBANK = [
+        { quote: "I think, therefore I am.", author: "Rene Descartes" },
+        {
+          quote:
+            "I may disagree with what you say, but I will defend to death your right to say it.",
+          author: "Evelyn Beatrice Hall",
+        },
+        {
+          quote: "If men were perfectly virtuous, they wouldn’t have friends.",
+          author: "Montesquieu",
+        },
+        {
+          quote:
+            "People do what they hate for money and use the money to do what they love.",
+          author: "Jimmy O. Yang’s dad?",
+        },
+        {
+          quote:
+            "Small things make perfection, but perfection is no small thing.",
+          author: "Sir Henry Royce",
+        },
+        { quote: "A masterpiece is born a masterpiece.", author: "Hyouka" },
+        {
+          quote: "History will be kind to me, for I intend to write it.",
+          author: "Winston Churchill",
+        },
+        {
+          quote:
+            "No problem can be solved from the same level of consciousness that created it. We must see the world anew.",
+          author: "Albert Einstein",
+        },
+      ];
       window.onload = init;
       function init() {
         generateQuote();
       }
       function generateQuote() {
-        console.log("Quote Generated");
-        document.getElementById("text").innerText = "Nolan the Dev";
-        document.getElementById("author").innerText = "the Author";
+        let quoteSize = QUOTEBANK.length;
+        let randomIndex = Math.floor(Math.random() * quoteSize);
+        let randomQuoteData = QUOTEBANK[randomIndex];
+
+        document.getElementById("text").innerText = randomQuoteData.quote;
+        document.getElementById("author").innerText = randomQuoteData.author;
       }
     </script>
     <style>
       * {
         font-size: 2rem;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      #quote-box {
+        text-align: center;
+        width: 50%;
+        max-width: 600px;
       }
     </style>
   </head>
@@ -22,7 +69,7 @@
     <wrapper id="quote-box">
       <div id="text"></div>
       <div id="author"></div>
-      <button id="new-quote">New Quote</button>
+      <button id="new-quote" onclick="generateQuote()">New Quote</button>
       <a href="twitter.com/intent/tweet" id="tweet-quote">Tweet Quote</a>
     </wrapper>
 
